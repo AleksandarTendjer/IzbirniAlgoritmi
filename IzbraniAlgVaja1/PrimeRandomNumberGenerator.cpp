@@ -69,16 +69,17 @@ bool PrimeRandomNumberGenerator::isPrime(long long num)
 
 	return true;
 }
-bool PrimeRandomNumberGenerator::MilerRabin(long  p, long  s)
+bool PrimeRandomNumberGenerator::MilerRabin(long long  p, long  s)
 {
-	long d = 0;
-		long k,a,x;
+	long long  d = 0,a,x;
+			long k;
 	if (p <= 3)
 		return true;
 	if (p % 2 == 0)
 	{
 		return false;
 	}
+	//resolving the equalition
 	d = p - 1;
 	k = 0;
 	while (d % 2 != 0)
@@ -89,13 +90,14 @@ bool PrimeRandomNumberGenerator::MilerRabin(long  p, long  s)
 	for (int i = 0; i < s; i++)
 	{
 		a = Random(2, p - 2);
-		x = (a^d) % p;
-		for (int j = 0; j < k - 1; j++)
-		{
-			if (x = p - 1)
-				break;
-			x = (x^2) % p;
-		}
+		x = (long long)pow(a,d) % p;
+		if(x!=1)
+			for (int j = 0; j < k - 1; j++)
+			{
+				if (x == p - 1)
+					break;
+				x = ((long long) pow(x,2)) % p;
+			}
 		if (x != p - 1)
 			return false;
 	}

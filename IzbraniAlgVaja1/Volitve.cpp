@@ -38,7 +38,12 @@ int main()
 			break;
 	case(3):
 		
-		cout<<" \n\r"<<PrimeGenerator.MilerRabin(p,3);
+		/*p = 4;
+		cout<<"\n\r dvojka  "<<PrimeGenerator.MilerRabin(p,3);
+		p = 3;
+		cout << " \n\r trojka " << PrimeGenerator.MilerRabin(p, 3);
+		p = 7;
+		cout << "\n\r 7: " << PrimeGenerator.MilerRabin(p, 3);*/
 		break;
 	default:
 		cout << "Pogrešna izbira!\r\n";

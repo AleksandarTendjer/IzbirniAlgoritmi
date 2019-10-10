@@ -7,6 +7,6 @@ public:
 	~PrimeRandomNumberGenerator();
 	long* Naive();
 	bool isPrime(long long num);
-	bool MilerRabin(long p,long s);
+	bool MilerRabin(long long  p,long s);
 };
 
