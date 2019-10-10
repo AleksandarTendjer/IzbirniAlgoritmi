@@ -8,7 +8,5 @@ public:
 	long* Naive();
 	bool isPrime(long long num);
 	bool MilerRabin(long p,long s);
-	
-
 };
 
