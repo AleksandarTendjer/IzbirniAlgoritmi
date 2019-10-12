@@ -22,7 +22,7 @@ public:
 	long long  getM();
 
 	long long  LCG();
-	long long  Random(long long a, long b );
+	long long  Random(long long a,long  long b );
 	//destructor
 	~RandomGenerator();
 };

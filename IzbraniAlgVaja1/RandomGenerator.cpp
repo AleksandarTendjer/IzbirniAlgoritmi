@@ -41,7 +41,7 @@ long long  RandomGenerator::LCG()
 	
 	return (abs(getA()) * getRo() + getB()) % getM();
 }
-long long  RandomGenerator::Random(long long  a, long b)
+long long  RandomGenerator::Random(long long  a,long long b)
 {
 	return (a + LCG()) % (b - a + 1);
 }

@@ -76,9 +76,8 @@ bool PrimeRandomNumberGenerator::MilerRabin(long long  p, long  s)
 	if (p <= 3)
 		return true;
 	if (p % 2 == 0)
-	{
 		return false;
-	}
+	
 	//resolving the equalition
 	d = p - 1;
 	k = 0;
@@ -87,23 +86,30 @@ bool PrimeRandomNumberGenerator::MilerRabin(long long  p, long  s)
 		d /= 2;
 		k += 1;
 	}
-	for (int i = 0; i < s; i++)
+	//bug??
+	for (int i = 0; i <= s; i++)
 	{
 		a = Random(2, p - 2);
-		x = (long long)pow(a,d) % p;
-		if(x!=1)
-			for (int j = 0; j < k - 1; j++)
+		x = ((long )pow(a,d)) % p;//zameniti modularnm ek
+		if (x != 1) {
+			for (int j = 0; j <= k - 1; j++)
 			{
 				if (x == p - 1)
 					break;
-				x = ((long long) pow(x,2)) % p;
+				x = ((long long)pow(x, 2)) % p;
 			}
-		if (x != p - 1)
-			return false;
+			if (x != p - 1)
+				return false;
+		}
 	}
 	return true;
 }
+long long PrimeRandomNumberGenerator::  Modular_Expression(long long  a, long b, int  n)
+{
+	int d = 1;
 
+	return d;
+}
 PrimeRandomNumberGenerator::~PrimeRandomNumberGenerator()
 {
 }
