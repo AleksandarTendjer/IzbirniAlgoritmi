@@ -43,10 +43,14 @@ int main()
 		p = 17;
 		cout << " \n\r 17 " << PrimeGenerator.MilerRabin(p, 3);
 		p = 31;
-		cout << " \n\r 37 " << PrimeGenerator.MilerRabin(p, 3);
+		cout << " \n\r 31 " << PrimeGenerator.MilerRabin(p, 3);
 		p = 234131;
 		cout << " \n\r 234131 " << PrimeGenerator.MilerRabin(p, 3);
 		p = 99991;
+		cout << " \n\r 99991 " << PrimeGenerator.MilerRabin(p, 3);
+		p = 20;
+		cout << " \n\r 20 " << PrimeGenerator.MilerRabin(p, 3);
+		p = 996;
 		cout << " \n\r 99991 " << PrimeGenerator.MilerRabin(p, 3);
 		
 		break;
