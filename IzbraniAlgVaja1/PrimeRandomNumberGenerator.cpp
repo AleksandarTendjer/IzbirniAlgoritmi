@@ -90,7 +90,7 @@ bool PrimeRandomNumberGenerator::MilerRabin(long long  p, long  s)
 	for (int i = 0; i <= s; i++)
 	{
 		a = Random(2, p - 2);
-		x = ((long )pow(a,d)) % p;//zameniti modularnm ek
+		x = ModularExponention(a, d, p);//((long long)pow(a,d)) % p;//zameniti  
 		if (x != 1) {
 			for (int j = 0; j <= k - 1; j++)
 			{
@@ -104,11 +104,29 @@ bool PrimeRandomNumberGenerator::MilerRabin(long long  p, long  s)
 	}
 	return true;
 }
-long long PrimeRandomNumberGenerator::  Modular_Expression(long long  a, long b, int  n)
+long long PrimeRandomNumberGenerator::  ModularExponention(long long  number, long power, int  modulus)
 {
-	int d = 1;
+	/*long long pows = power;
+	long long num=number;*/
+	long long res = 1;
+	number = number % modulus;
+	while (power > 0)
+	{
+		if (power & 1)
+			res = (res * number) % modulus;
 
-	return d;
+		power = power >> 1;
+		number = (number * number) % modulus;
+	}
+	/*while (pows > 0)
+	{
+		if ((pows&1)==1)
+			testVar = ((testVar % modulus) * (num % modulus)) % modulus;
+		
+			number = ((number % modulus) * (number % modulus)) % modulus;
+			pows >>= 1;
+	}*/
+	return res;
 }
 PrimeRandomNumberGenerator::~PrimeRandomNumberGenerator()
 {

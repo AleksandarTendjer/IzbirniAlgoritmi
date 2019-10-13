@@ -8,5 +8,5 @@ public:
 	long* Naive();
 	bool isPrime(long long num);
 	bool MilerRabin(long long  p, long s);
-	long long  Modular_Expression(long long  a, long b, int  n);
+	long long  ModularExponention(long long  number, long powNumber, int  modulus);
 };

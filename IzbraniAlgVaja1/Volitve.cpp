@@ -10,7 +10,7 @@ int main()
 {
 	//RandomGenerator* Random = new RandomGenerator();
 	int userInput;
-	cout << "Izbira opcijo: \n\r 1)SuperDuper Generator \n\r 2) Naivna \n\r 3) Miler-Rabin \n\r";
+	cout << "Izbira opcija: \n\r 1)SuperDuper Generator \n\r 2) Naivna \n\r 3) Miler-Rabin \n\r";
 	cin >>userInput ;
 	long a;
 
@@ -37,20 +37,18 @@ int main()
 			}
 			break;
 	case(3):
-		p = 3;
-		cout << "\n\r trojka  " << PrimeGenerator.MilerRabin(p, 3);
-		p = 5;
-		cout << " \n\r 5 " << PrimeGenerator.MilerRabin(p, 3);
-		p = 7;
-		cout << " \n\r 7 " << PrimeGenerator.MilerRabin(p, 3);
+		
+		p = 13;
+		cout << " \n\r 13 " << PrimeGenerator.MilerRabin(p, 3);
+		p = 17;
+		cout << " \n\r 17 " << PrimeGenerator.MilerRabin(p, 3);
+		p = 31;
+		cout << " \n\r 37 " << PrimeGenerator.MilerRabin(p, 3);
 		p = 234131;
 		cout << " \n\r 234131 " << PrimeGenerator.MilerRabin(p, 3);
-		/*p = 4;
-		cout<<"\n\r dvojka  "<<PrimeGenerator.MilerRabin(p,3);
-		p = 3;
-		cout << " \n\r trojka " << PrimeGenerator.MilerRabin(p, 3);
-		p = 7;
-		cout << "\n\r 7: " << PrimeGenerator.MilerRabin(p, 3);*/
+		p = 99991;
+		cout << " \n\r 99991 " << PrimeGenerator.MilerRabin(p, 3);
+		
 		break;
 	default:
 		cout << "Pogrešna izbira!\r\n";
