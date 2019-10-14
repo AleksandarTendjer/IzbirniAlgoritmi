@@ -13,10 +13,10 @@ int main()
 	cout << "Izbira opcija: \n\r 1)SuperDuper Generator \n\r 2) Naivna \n\r 3) Miler-Rabin \n\r";
 	cin >>userInput ;
 	long a;
-
+	int i = 0;
 	RandomGenerator Random;
 	long p = Random.LCG();
-	long* result;
+	long long * result;
 	PrimeRandomNumberGenerator PrimeGenerator;
 	switch (userInput)
 	{
@@ -24,34 +24,31 @@ int main()
 	case(1):
 	
 		a=Random.LCG();
-		//a = Random.Random();
 		cout <<"Resitva je :"<< a;
 		break; 
 	case(2):
-		 
-			 result= PrimeGenerator.Naive();
-			while (result)
+		cout << "-------Naive Generator-----\r\n";
+			  cout<<PrimeGenerator.Naive()<<"\r\n";
+			  cout << "-------Naive Tester-----\r\n";
+			  //ispitati za 19 i izmeriti vreme
+			  cout << "Enter a number:\r\n";
+			  cin >> p;
+			  cout << " \n\r " << p << " is: " << (PrimeGenerator.NaiveTest(p) ? "a prime number\r\n" : "not a prime number \r\n");
+			  /*while (*(result+i)<61169)
 			{
-				cout << " \n\r" << *result;
-				result++;
-			}
+				cout << " \n\r" << *(result+i);
+				i++;
+			}*/
 			break;
 	case(3):
+		cout << "-------MilerRabin Generator-----\r\n";
+		cout<<PrimeGenerator.MilerRabin()<<"\r\n";
+		//ispitati za 19 i zimeriti vreme
+		cout << "-------MilerRabin Tester-------\r\n";
+		cout << "Enter a number: \r\n";
+		cin >> p;
+		cout << " \n\r "<<p<<" is: "<< (PrimeGenerator.MilerRabinTest(p,3)?"a prime number\r\n":"not a prime number \r\n");
 		
-		p = 13;
-		cout << " \n\r 13 " << PrimeGenerator.MilerRabin(p, 3);
-		p = 17;
-		cout << " \n\r 17 " << PrimeGenerator.MilerRabin(p, 3);
-		p = 31;
-		cout << " \n\r 31 " << PrimeGenerator.MilerRabin(p, 3);
-		p = 234131;
-		cout << " \n\r 234131 " << PrimeGenerator.MilerRabin(p, 3);
-		p = 99991;
-		cout << " \n\r 99991 " << PrimeGenerator.MilerRabin(p, 3);
-		p = 20;
-		cout << " \n\r 20 " << PrimeGenerator.MilerRabin(p, 3);
-		p = 996;
-		cout << " \n\r 99991 " << PrimeGenerator.MilerRabin(p, 3);
 		
 		break;
 	default:
