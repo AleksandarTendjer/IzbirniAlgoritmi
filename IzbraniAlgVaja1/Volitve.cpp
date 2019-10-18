@@ -22,7 +22,7 @@ int main()
 	bool inMenu = true;
 	while (inMenu)
 	{
-		cout << "Choose an option: \n\r 1)SuperDuper Generator \n\r 2) Naive \n\r 3) Miler-Rabin 4) Exit \n\r";
+		cout << "Choose an option: \n\r 1)SuperDuper Generator \n\r 2) Naive \n\r 3) Miler-Rabin \n\r 4) Exit \n\r";
 		cin >> userInput;
 		switch (userInput)
 		{
@@ -33,7 +33,7 @@ int main()
 			cout << "Resitva je :" << p;
 			break;
 		case(2):
-			cout << "1)Generate with Naive 2)Test with Naive \r\n";
+			cout << "1)Generate with Naive \r\n 2)Test with Naive \r\n";
 			cin >> userInput;
 			if (userInput == 1)
 			{
@@ -43,7 +43,7 @@ int main()
 				start = std::clock();
 				cout << PrimeGenerator.Naive(numOfBits) << "\r\n";
 				duration = (double)(std::clock() - (double)start) / (double)CLOCKS_PER_SEC;
-				cout << duration;
+				cout <<"Time needed: "<< duration<<"\n\r";
 			}
 			else if (userInput == 2)
 			{
@@ -54,17 +54,18 @@ int main()
 			}
 			break;
 		case(3):
-			cout << "1)Generate Random Number with MilerRabin 2)Test if a number is prime\r\n";
+			cout << "1)Generate Random Number with MilerRabin \r\n 2)Test if a number is prime\r\n";
 			cin >> userInput;
 			if (userInput == 1)
 			{
 				cout << "Enter number of bits: \r\n";
 				cin >> numOfBits;
-				start = std::clock();
+				
 				cout << "-------MilerRabin Generator-----\r\n";
+				start = std::clock();
 				cout << PrimeGenerator.MilerRabin(numOfBits) << "\r\n";
 				duration = (double)(std::clock() - (double)start) / (double)CLOCKS_PER_SEC;
-				cout << duration;
+				cout << "Time needed: " << duration<<"\n\r";
 			}
 			else if (userInput == 2)
 			{
