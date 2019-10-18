@@ -10,52 +10,12 @@ PrimeRandomNumberGenerator::PrimeRandomNumberGenerator() :RandomGenerator()
 	PrimeRandomNumberGenerator::setRo(1);
 }
 
-//long long* PrimeRandomNumberGenerator::Naive()
-//{
-//	long long    p = Random(69069, 0);
-//	bool found = false;
-//	long q;
-//	long long* result = new  long long[MAX];
-//	result[0] = p;
-//	int j,k=1;
-//	if (p % 2 == 0)
-//		p +=  1;
-//	j = 3;
-//	while (k<MAX)
-//	{
-//		found = false;
-//		q = sqrt(p);
-//		while (found != true)
-//		{
-//			while (p % j != 0 && j <= q)//p%j==0 kdaj nema ostateka
-//			{
-//				j += 2;
-//			}
-//			if (j > q)
-//			{
-//				found = isPrime(p);
-//				if (found)
-//				{
-//					result[k] = p;
-//					k++;
-//				}
-//				else
-//				{
-//					p += 2;
-//				}
-//			}
-//			else
-//			{
-//				p += 2;
-//			}
-//		}
-//		p += 2;
-//	}
-//	return result;
-//}
-long long  PrimeRandomNumberGenerator::Naive()
+
+long long  PrimeRandomNumberGenerator::Naive(int numOfBits)
 {
-	long long r = LCG();
+	int num;
+	num = TransformIntoNumber(numOfBits);
+	int r = Random(0, num);
 	if (r % 2 == 0)
 		r += 1;
 	while (!NaiveTest(r))
@@ -64,6 +24,17 @@ long long  PrimeRandomNumberGenerator::Naive()
 	}
 	return r;
 }
+int  PrimeRandomNumberGenerator::TransformIntoNumber(int numOfBits)
+{
+	int res=0;
+	int i = 0;
+	while (i < numOfBits)
+	{
+		res += pow(2, i);
+		i++;
+	}
+	return res;
+}
 bool PrimeRandomNumberGenerator::NaiveTest(long long p)
 {
 		int j,k=1;
@@ -71,7 +42,7 @@ bool PrimeRandomNumberGenerator::NaiveTest(long long p)
 	j = 3;
 		q = sqrt(p);
 		
-			while (p % j != 0 && j <= q)//p%j==0 kdaj nema ostateka
+			while (p % j != 0 && j <= q)
 			{
 				j += 2;
 			}
@@ -99,10 +70,16 @@ bool PrimeRandomNumberGenerator::isPrime(long long num)
 
 	return true;
 }
-long PrimeRandomNumberGenerator::MilerRabin()
+long PrimeRandomNumberGenerator::MilerRabin(int numOfBits)
 {
 	long  s = 3;
-	long long r = LCG();
+	long long r, num;
+	if (numOfBits >= 32)
+		return 0;
+	num = TransformIntoNumber(numOfBits);
+
+	 r = Random(0,num );
+
 	if (r % 2 == 0)
 		r += 1;
 	while (!MilerRabinTest(r, s))
@@ -136,13 +113,13 @@ bool PrimeRandomNumberGenerator::MilerRabinTest(long long  p, long  s)
 	for (int i = 0; i <= s; i++)
 	{
 		a = Random(2, p - 2);
-		x = ModularExponention(a, d, p); //((long long)pow(a,d)) % p;//zameniti  
+		x = ModularExponention(a, d, p);   
 		if (x != 1) {
 			for (int j = 0; j <= k - 1; j++)
 			{
 				if (x == p - 1)
 					break;
-				x = ((long long)pow(x, 2)) % p;
+				x = ModularExponention(x, 2, p);
 			}
 			if (x != p - 1)
 				return false;

@@ -14,61 +14,77 @@ int main()
 	int userInput;
 	RandomGenerator Random;
 	long  long p;
+	int numOfBits;
 	double duration;
+	int s=0;
 	PrimeRandomNumberGenerator PrimeGenerator;
 	std::clock_t start;
-	
-	cout << "Choose an option: \n\r 1)SuperDuper Generator \n\r 2) Naive \n\r 3) Miler-Rabin \n\r";
-	cin >>userInput ;
-
-
-	switch (userInput)
+	bool inMenu = true;
+	while (inMenu)
 	{
-	
-	case(1):
-	
-		p=Random.LCG();
-		cout <<"Resitva je :"<< p;
-		break; 
-	case(2):
-		cout << "-------Naive Generator-----\r\n";
+		cout << "Choose an option: \n\r 1)SuperDuper Generator \n\r 2) Naive \n\r 3) Miler-Rabin 4) Exit \n\r";
+		cin >> userInput;
+		switch (userInput)
+		{
 
-		cout<<PrimeGenerator.Naive()<<"\r\n";
+		case(1):
 
-		cout << "-------Naive Tester-----\r\n";
-			  //ispitati za 19 i izmeriti vreme
-			  cout << "Enter a number:\r\n";
-			  cin >> p;
-			  start = std::clock();
-			  cout << " \n\r " << p << " is: " << (PrimeGenerator.NaiveTest(p) ? "a prime number\r\n" : "not a prime number \r\n");
-			  duration = (double)(std::clock() - (double)start) / (double)CLOCKS_PER_SEC;
-			  cout << duration;//duration of fnction
-			  /*while (*(result+i)<61169)
-			{
-				cout << " \n\r" << *(result+i);
-				i++;
-			}*/
+			p = Random.LCG();
+			cout << "Resitva je :" << p;
 			break;
-	case(3):
+		case(2):
+			cout << "1)Generate with Naive 2)Test with Naive \r\n";
+			cin >> userInput;
+			if (userInput == 1)
+			{
+				cout << "-------Naive Generator-----\r\n";
+				cout << "Insert number of bits: \r\n";
+				cin >> numOfBits;
+				start = std::clock();
+				cout << PrimeGenerator.Naive(numOfBits) << "\r\n";
+				duration = (double)(std::clock() - (double)start) / (double)CLOCKS_PER_SEC;
+				cout << duration;
+			}
+			else if (userInput == 2)
+			{
+				cout << "-------Naive Tester-----\r\n";
+				cout << "Enter a number:\r\n";
+				cin >> p;
+				cout << " \n\r " << p << " is: " << (PrimeGenerator.NaiveTest(p) ? "a prime number\r\n" : "not a prime number \r\n");  
+			}
+			break;
+		case(3):
+			cout << "1)Generate Random Number with MilerRabin 2)Test if a number is prime\r\n";
+			cin >> userInput;
+			if (userInput == 1)
+			{
+				cout << "Enter number of bits: \r\n";
+				cin >> numOfBits;
+				start = std::clock();
+				cout << "-------MilerRabin Generator-----\r\n";
+				cout << PrimeGenerator.MilerRabin(numOfBits) << "\r\n";
+				duration = (double)(std::clock() - (double)start) / (double)CLOCKS_PER_SEC;
+				cout << duration;
+			}
+			else if (userInput == 2)
+			{
+				cout << "-------MilerRabin Tester-------\r\n";
+				cout << "Enter a number : \r\n";
+				cin >> p;
+				cout << "Enter precision : \r\n";
+				cin >> s;
+				cout << " \n\r " << p << " is: " << (PrimeGenerator.MilerRabinTest(p, s) ? "a prime number\r\n" : "not a prime number \r\n");
 
-		cout << "-------MilerRabin Generator-----\r\n";
-		cout<<PrimeGenerator.MilerRabin()<<"\r\n";
+			}
+			break;
+		case(4):
+			inMenu = false;
+			break;
+		default:
+			cout << "Pogrešna izbira!\r\n";
+			break;
+		}
 
-		//ispitati za 19 i zimeriti vreme
-		cout << "-------MilerRabin Tester-------\r\n";
-		cout << "Enter a number: \r\n";
-		cin >> p;
-		start = std::clock();
-		cout << " \n\r "<<p<<" is: "<< (PrimeGenerator.MilerRabinTest(p,3)?"a prime number\r\n":"not a prime number \r\n");
-		duration = (double)(std::clock() - (double)start) / (double)CLOCKS_PER_SEC;
-		cout << duration;//duration of function
-		
-		break;
-	default:
-		cout << "Pogrešna izbira!\r\n";
-		break;
 	}
-
-
 	return 0;
 }
