@@ -53,23 +53,6 @@ bool PrimeRandomNumberGenerator::NaiveTest(long long p)
 			
 	}
 
-
-bool PrimeRandomNumberGenerator::isPrime(long long num)
-{
-	if (num == 1)
-		return false;
-
-	if (num == 2)
-		return true;
-
-	if (num % 2 == 0)
-		return false;
-	for (int d = 3; d <= (int)sqrt(num); d++)
-		if (num % d == 0)
-			return false;
-
-	return true;
-}
 long PrimeRandomNumberGenerator::MilerRabin(int numOfBits)
 {
 	long  s = 3;
@@ -101,7 +84,7 @@ bool PrimeRandomNumberGenerator::MilerRabinTest(long long  p, long  s)
 		return true;
 	if (p % 2 == 0)
 		return false;
-	//resolving the equalition
+	
 	d = p - 1;
 	k = 0;
 	while (d % 2 == 0)
