@@ -10,7 +10,6 @@ using namespace std;
 int main()
 {
 
-	//RandomGenerator* Random = new RandomGenerator();
 	int userInput;
 	RandomGenerator Random;
 	long  long p;
@@ -30,7 +29,7 @@ int main()
 		case(1):
 
 			p = Random.LCG();
-			cout << "Resitva je :" << p;
+			cout << "The result is :" << p<<"\n\r";
 			break;
 		case(2):
 			cout << "1)Generate with Naive \r\n 2)Test with Naive \r\n";

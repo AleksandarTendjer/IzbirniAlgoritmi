@@ -59,8 +59,8 @@ long PrimeRandomNumberGenerator::MilerRabin(int numOfBits)
 	long long r, num;
 	if (numOfBits >= 32)
 		return 0;
-	num = TransformIntoNumber(numOfBits);
 
+	num = TransformIntoNumber(numOfBits);
 	 r = Random(0,num );
 
 	if (r % 2 == 0)
